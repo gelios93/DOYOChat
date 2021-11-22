@@ -1,0 +1,35 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.main-div mat-card{
+    padding: 0;
+    border-radius: 10px;
+}
+.main-div p, a{
+    font-size: small;
+}
+.main-div a {
+    color: blue;
+}
+.auth-toolbar {
+    justify-content: center;
+    background-color:blueviolet;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+.auth-form {
+    padding: 20px;
+}
+.discord {
+    background-color: rgb(115,137,220);
+}
+
+.home-div {
+    background-color: blueviolet;
+}
+
+.home-card {
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}

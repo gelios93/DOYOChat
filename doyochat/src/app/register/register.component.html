@@ -1,0 +1,26 @@
+<div class="main-div" fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex.sm="60" fxFlex.md="40" fxFlex.lg="20" fxFlex.gt-lg="20">
+        <mat-toolbar class="auth-toolbar">Регистрация</mat-toolbar>
+        <form class="auth-form" fxLayout="column" (ngSubmit)="register()">
+            <mat-form-field>
+                <input matInput type="text" placeholder="Имя пользователя">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="email" placeholder="Электронная почта">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Пароль">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Подтвердить пароль">
+            </mat-form-field>
+            <p>Есть аккаунт? <a routerLink="/login">Войти</a></p>
+        <button mat-raised-button type="submit">Зарегистрироваться</button><br>
+        <button class="discord" mat-raised-button type="button" >
+            <img src="assets/images/discord.png" width="30" height="30"/>
+            Discord
+        </button>
+        </form>
+    </mat-card>
+</div>
+

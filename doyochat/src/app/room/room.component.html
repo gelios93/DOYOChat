@@ -3,6 +3,18 @@
         <div class="home-main">
             <div class="home-first">
                 <div class="first-first">
+                    <div class="header">
+                        3/4
+                    </div>
+                    <div class="header">
+                        Players
+                    </div>
+                    <div class="header">
+                        <button mat-raised-button class="search-but">SEARCH</button>
+                    </div>
+
+                </div>
+                <div class="second-first">
                     <mat-card class="card-container">
                             <div class="card-div1">
                             <img mat-card-sm-image class="profile" src="assets/images/profile.jpg"/>
@@ -10,30 +22,25 @@
                             <div class="card-div2">
                                 @tartaglia11
                             </div>
-                        
-                </mat-card>
-                </div>
-                <div class="second-first">
-                    <mat-card fxFlexAlign="stretch">
-                    <p>friends</p>
                     </mat-card>
                 </div>
+                <div class="third-first">
+                    <button mat-raised-button>LEAVE</button>
+                </div>
             </div>
-            
             <div class="home-second">
                 <div class="first-second">
                     <mat-card fxFlexAlign="stretch">
-                    <p>animations
-                    </p>
+                    <p>buttons</p>
                     </mat-card>
                 </div>
                 <div class="second-second">
-                    <div class="btn-div1">
-                    <button (click)="redirectToRoom()" mat-raised-button class="but1">CREATE ROOM</button>
-                    </div>
-                    <div class="btn-div2">
-                    <button (click)="searchRoom()"mat-raised-button class="but2">SEARCH ROOM</button>
-                    </div>
+                    <mat-card fxFlexAlign="stretch">
+                    <p>buttons</p>
+                    </mat-card>
+                </div>
+                <div class="third-second">
+                    <button (click)="startGame()" mat-raised-button class="but">START GAME</button>
                 </div>
             </div>
         </div>

@@ -19,36 +19,63 @@
     border-radius: 10px;
 }
 .first-first {
-    height: min-content;
-    background-color:rgb(218, 216, 216);
-    border-radius: 10px;
-}
-.second-first {
-    margin-top: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
     height: 100%;
     background-color:rgb(218, 216, 216);
     border-radius: 10px;
+    justify-content: space-around;
+}
+
+.header {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+}
+
+.search-but {
+
+    height: min-content;
+}
+.second-first {
+    flex: 9;
+    height: min-content;
+    background-color:rgb(218, 216, 216);
+    border-radius: 10px, 10px, 0px, 0px;
+    margin-top: 16px;
+}
+.third-first {
+    flex: 1;
+    height: 100%;
+    background-color:rgb(218, 216, 216);
+    border-radius: 0px 0px 10px 10px;
 }
 .first-second {
-    flex: 7;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
     height: 100%;
     background-color:rgb(218, 216, 216);
     border-radius: 10px;
 }
 .second-second {
+    flex: 6;
+    height: 100%;
+    background-color:rgb(218, 216, 216);
+    border-radius: 10px;
+    margin-top: 16px;
+}
+.third-second {
     flex: 1;
     margin-top: 16px;
-    display: flex;
-    flex-direction: row;
     height: 100%;
-    //background-color:rgb(218, 216, 216);
     border-radius: 10px;
-    //justify-content: center;
+    margin-top: 16px;
 }
-
 .profile {
-    width: 160px;
-    height: 160px;
+    width: 100px;
+    height: 100px;
     border-radius: 5px;
 }
 
@@ -66,32 +93,13 @@
     margin-right: 8px;
 }
 
-.btn-div1 {
-    flex: 1;
-    justify-content: end;
-}
-
-.btn-div2 {
-    flex: 1;
-    justify-content: start;
-}
-
-.but1 {
+.but {
     background-color: rgb(255, 119, 28);
     margin-top: 8px;
-    margin-left: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
     height: 65px;
-    width: 80%;
-    font: large Arial, sans-serif;
-    text-shadow: red 0 0 2px;
-}
-
-.but2 {
-    background-color: rgb(255, 119, 28);
-    margin-top: 8px;
-    margin-right: 10%;
-    height: 65px;
-    width: 80%;
+    width: 60%;
     font: large Arial, sans-serif;
     text-shadow: red 0 0 2px;
 }

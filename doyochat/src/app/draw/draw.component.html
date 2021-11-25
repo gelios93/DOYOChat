@@ -1,0 +1,55 @@
+<div class="home-div" fxLayoutAlign="center center" fxFlexFill>
+    <mat-card class="home-card" id="base" fxFlexAlign="stretch" fxFlex.sm="95" fxFlex.md="90" fxFlex.lg="70" fxFlex.gt-lg="60">
+        <div class="main">
+            <div class="first">
+                <div class="num-frames">
+                    <p>1 / 3</p>
+                </div>
+                <div class="pal" *ngFor = "let color of colors">
+                   <div class="row">
+                        <div class="item" [style.backgroundColor]="color[0]" (click)="changeColor(color, 0)"></div>
+                        <div class="item" [style.backgroundColor]="color[1]" (click)="changeColor(color, 1)"></div>
+                   </div>
+                </div>
+                <div class="row">
+                    <button class="but-leave" mat-raised-button (click)="leave()">
+                        <img width="30" height="30" src="./assets/images/exit.png"/>
+                    </button>
+                    <div class="help"></div>
+                </div>
+            </div>
+            <div class="second">
+                <div class="header">
+                    <p>DRAW THE FRAME OF ANIMATION</p>
+                </div>
+                <div class="field">
+                    <canvas id='canvas' width="750" height="430">Ваш браузер устарел!</canvas>
+                </div>
+                <div class="footer">
+                    <div class="opacity">
+                        <p>OPACITY</p>
+                        <mat-slider width="200" min="1" step="1" max="100" value="100"></mat-slider>
+                        <!-- (input)="changeOpacity(event) -->
+                    </div>
+                    <div class="finish">
+                        <button class="but-finish" mat-raised-button (click)="finish()">FINISH</button>
+                    </div>
+                </div>
+            </div>
+            <div class="third">
+                <div class="time"><p>{{time}}</p></div>
+                <div class="line">
+                    <div *ngFor = "let size of sizes">
+                        <div class="line-item" (click)="changeLine(size)">
+                            <div [style.width]="size+'px'" [style.height]="size+'px'" class="marker"></div>
+                        </div>
+                    </div>
+                    <button class="but-clear" mat-raised-button (click)="clearEvent()">
+                        <img width="40" height="40" src="./assets/images/clear2.png"/>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </mat-card>
+</div>

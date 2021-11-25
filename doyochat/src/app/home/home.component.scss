@@ -20,19 +20,19 @@
 }
 .first-first {
     height: min-content;
-    background-color:rgb(218, 216, 216);
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
 }
 .second-first {
     margin-top: 16px;
     height: 100%;
-    background-color:rgb(218, 216, 216);
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
 }
 .first-second {
     flex: 7;
     height: 100%;
-    background-color:rgb(218, 216, 216);
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
 }
 .second-second {
@@ -52,9 +52,13 @@
     border-radius: 5px;
 }
 
+.theme {
+    color: white;
+    background-color: rgb(22, 5, 36);
+}
+
 .card-container {
   padding: 10px;
-  color: black;
   max-width: 500px;
   display: flex;
   flex-direction: row;

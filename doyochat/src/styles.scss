@@ -17,8 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .auth-toolbar {
     justify-content: center;
-    //background-color:blueviolet;
-    background-color: rgb(29, 8, 46);
+    background-color: rgb(22, 5, 36);
     color: white;
     border-radius: 10px 10px 0px 0px;
 }
@@ -72,9 +71,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
   }
 
-  .but-clear {
-    // background-image: url("assets/images/clear1.png");
-    // background-size: 40px 40px;
-    // width: min-content;
-    // height: 40px;
+.theme {
+    color: white;
+    background-color: rgb(22, 5, 36);
 }

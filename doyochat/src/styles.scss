@@ -1,6 +1,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.main-div {
+    background-image: url("assets/images/dinoback.jpg");
+}
+
 .main-div mat-card{
     padding: 0;
     border-radius: 10px;
@@ -13,23 +17,106 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .auth-toolbar {
     justify-content: center;
-    background-color:blueviolet;
+    background-color: rgb(22, 5, 36);
     color: white;
     border-radius: 10px 10px 0px 0px;
 }
 .auth-form {
+    color: white;
     padding: 20px;
 }
+
 .discord {
     background-color: rgb(115,137,220);
 }
 
 .home-div {
-    background-color: blueviolet;
+    background-image: url("assets/images/dinoback.jpg");
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .home-card {
     border-radius: 10px;
     margin-top: 3%;
     margin-bottom: 3%;
+    background-color: rgba(39, 11, 61, 0.75);
+}
+
+.auth-card{
+    background-color: rgba(39, 11, 61, 0.90);
+}
+.enter {
+    background-color: rgb(255, 119, 28);
+    font: medium Arial, sans-serif;
+    //text-shadow: red 0 0 2px;
+}
+
+.mat-form-field {
+    .mat-input-element {
+      color: white;
+      background:transparent;
+    }
+    .mat-form-field-label {
+      color: rgba(255, 255, 255, 0.555);
+    }
+    .mat-form-field-underline {
+      background-color: rgba(255, 255, 255, 0.555);
+    }
+    .mat-form-field-ripple {
+      background-color: rgb(255, 255, 255);
+    }
+    .mat-form-field-required-marker {
+      color: white;
+    }
+  }
+
+.theme {
+    color: white;
+    background-color: rgb(22, 5, 36);
+}
+
+.error {
+    padding: 0;
+    margin: 0;
+    color:crimson;
+    font-size:xx-small;
+}
+
+.mat-form-field {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.font-theme{
+    color: rgb(255, 144, 70);
+    font-size: 28px;
+    margin-bottom: 3px;
+    font-family: Arial, sans-serif;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+.font-theme-small{
+    color: rgb(255, 144, 70);
+    font-size: 22px;
+    font-family: Arial, sans-serif;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+transition: background-color 5000s;
+-webkit-text-fill-color: #fff !important;
+}
+
+.dialog-theme{
+    background-color: rgba(39, 11, 61, 0.5);
+    color: rgb(39, 11, 61);
+}
+
+.mat-dialog-container {
+    background-color: rgba(39, 11, 61);
 }

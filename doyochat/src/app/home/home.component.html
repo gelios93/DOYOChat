@@ -1,38 +1,173 @@
 <div class="home-div" fxLayoutAlign="center center" fxFlexFill>
-    <mat-card class="home-card" fxFlexAlign="stretch" fxFlex.sm="95" fxFlex.md="90" fxFlex.lg="85" fxFlex.gt-lg="80">
+    <mat-card class="home-card" fxFlexAlign="stretch" fxFlex.sm="95" fxFlex.md="90" fxFlex.lg="70" fxFlex.gt-lg="65">
         <div class="home-main">
             <div class="home-first">
                 <div class="first-first">
-                    <mat-card class="card-container">
-                        <mat-card-content>
-                        <mat-card-title-group>
-                            <img mat-card-sm-image class="profile" src="assets/images/profile.jpg"/>
-                        <mat-card-title>Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Small</mat-card-subtitle>
-                        <mat-card-subtitle>Small</mat-card-subtitle>
-                        <mat-card-subtitle>Small</mat-card-subtitle>
-                        <mat-card-subtitle>Small</mat-card-subtitle>
-                        </mat-card-title-group>
-                    </mat-card-content>
-                </mat-card>
+                    <mat-card fxFlexAlign="stretch" class="card-container theme">
+                            <div id="card-div1">
+                                <img mat-card-sm-image width ="148" height="148" id="profile" (click)="changeIcon()"/> 
+                            </div>
+                            <div class="card-div2">
+                                <div *ngIf="!isChange; else elseChange" class="row">
+                                    <span class="font-theme">{{username}}</span>
+                                    <button class="small-but-c">
+                                        <img id="change" width ="16" height="16" src="./assets/images/change.png" (click)="changeName()"/> 
+                                    </button>
+                                </div>
+                                <ng-template #elseChange>
+
+                                    <form [formGroup]="form">
+                                        <mat-form-field class="change-name">
+                                            <input matInput type="text" formControlName="username">
+                                            <button type="button" matSuffix mat-icon-button aria-label="Clear" (click)="saveName()">
+                                                <mat-icon>done</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                        <span *ngIf="form.controls.username.hasError('required') && isSubmitted" class="error">Поле должно быть заполнено </span>
+                                        <span *ngIf="form.controls.username.hasError('maxlength') && isSubmitted" class="error">Допустимое кол-во символов от 4 до 35 </span>
+                                        <span *ngIf="form.controls.username.hasError('minlength') && isSubmitted" class="error">Допустимое кол-во символов от 4 до 35 </span>
+                                        <span *ngIf="form.controls.username.hasError('pattern') && isSubmitted" class="error">Имя должно содержать только латинские буквы и цифри </span>
+                                    </form>
+
+                                    <!-- <mat-form-field class="name-field" appearance="fill">
+                                        <input matInput type="text" [(ngModel)]="username">
+                                        <button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+                                            <mat-icon>done</mat-icon>
+                                        </button>
+                                    </mat-form-field> -->
+
+
+                                </ng-template>
+                                <div >
+                                    <span>Score: 15700</span>
+                                </div>
+                                <div >
+                                    <span></span>
+                                </div>
+                            </div>
+                    </mat-card>
                 </div>
                 <div class="second-first">
-                    <p>yooooo</p>
+                    <div>
+                        <mat-button-toggle-group class="button-toggle" value="chosen">
+                            <mat-button-toggle  value="chosen" class="tog" (click)="showFriendsPanel()">Друзья</mat-button-toggle>
+                            <mat-button-toggle class="tog" (click)="showRequestsPanel()">Заявки</mat-button-toggle>
+                            <mat-button-toggle class="tog" (click)="searchUserPanel()">Поиск</mat-button-toggle>
+                          </mat-button-toggle-group>
+                    </div>
+                    <div *ngIf="info === 1" class="scroll">
+                        <div *ngIf="resultFriends; else elseFriends">
+                        <mat-card *ngFor="let friend of friends" fxFlexAlign="stretch" class="user-container theme">
+                            <div id="card-div3">
+                                <div *ngIf = "friend.icon;else elseBlock">
+                                    <img [src]="'http://51.124.249.185/images/icons/'+ friend.icon" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                </div> 
+                                <ng-template #elseBlock>
+                                    <img src="./assets/images/empty_profile_.png" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                </ng-template>
+                            </div>
+                            <div class="card-div4">
+                                <span class="font-theme-small">{{friend.username}}</span>
+                                <span>{{friend.experience}}</span>
+                            </div>
+                            <div class="card-div5">
+                                <button class="small-but" (click)="deleteFriend(friend)">
+                                    <img id="del" width ="16" height="22" src="./assets/images/delete.png"/> 
+                                </button>
+                            </div>
+                        </mat-card>
+                        </div>
+                        <ng-template #elseFriends>
+                            <div class="center-text"><span class="results">Нет друзей :(</span></div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="info === 2" class="scroll">
+                        <div *ngIf="resultRequest; else elseRequest">
+                            <mat-card *ngFor="let request of requests" fxFlexAlign="stretch" class="user-container theme">
+                                <div id="card-div3">
+                                    <div *ngIf = "request.icon; else elseBlock">
+                                        <img [src]="'http://51.124.249.185/images/icons/'+ request.icon" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                    </div> 
+                                    <ng-template #elseBlock>
+                                        <img src="./assets/images/empty_profile_.png" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                    </ng-template>
+                                </div>
+                                <div class="card-div4">
+                                    <span class="font-theme-small">{{request.username}}</span>
+                                    <span>{{request.experience}}</span>
+                                </div>
+                                <div class="card-div5">
+                                    <button class="small-but" (click)="cancel(request)">
+                                        <img class="answer" width ="25" height="25" src="./assets/images/cross.png"/> 
+                                    </button>
+                                    <button class="small-but" (click)="accept(request)">
+                                        <img class="answer" width ="25" height="25" src="./assets/images/check.png"/> 
+                                    </button>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <ng-template #elseRequest>
+                            <div class="center-text"><span class="results">Нет запросов :(</span></div>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="info === 3" class="scroll">
+                        <div class="search">
+                            <mat-form-field class="search-field" appearance="fill">
+                                <mat-label>Введите никнейм пользователя</mat-label>
+                                <input matInput type="text" [(ngModel)]="value">
+                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <button class="small-but-search" (click)="searchUser()">
+                                <img id="but-search" width ="12" height="12" src="./assets/images/search.png"/> 
+                            </button>
+                        </div>
+                        <div *ngIf="resultSearch; else elseEmpty">
+                            <mat-card *ngFor="let res of search" fxFlexAlign="stretch" class="user-container theme">
+                                <div id="card-div3">
+                                    <div *ngIf = "res.icon;else elseBlock">
+                                        <img [src]="'http://51.124.249.185/images/icons/'+ res.icon" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                    </div> 
+                                    <ng-template #elseBlock>
+                                        <img src="./assets/images/empty_profile_.png" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                    </ng-template>
+                                </div>
+                                <div class="card-div4">
+                                    <span class="font-theme-small">{{res.username}}</span>
+                                    <span>{{res.experience}}</span>
+                                </div>
+                                <div class="card-div5">
+                                    <button class="small-but" (click)="addFriend(res)">
+                                        <img class="add" width ="25" height="25" src="./assets/images/add.png"/> 
+                                    </button>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <ng-template #elseEmpty>
+                            <div class="center-text"><span class="results">Нет результатов :(</span></div>
+                        </ng-template>
+                    </div>
                 </div>
             </div>
             
             <div class="home-second">
                 <div class="first-second">
-                    <p>boooo</p>
+                    <mat-grid-list cols="2" class="grid" rowHeight="1.74:1">
+                        <mat-grid-tile *ngFor="let anim of animations" class="box">
+                            <img class="animation" [src]="'http://51.124.249.185/images/animations/'+ anim" (click)="openGif(anim)">
+                        </mat-grid-tile>
+                      </mat-grid-list>                      
                 </div>
                 <div class="second-second">
-                    <p>mmma</p>
+                    <div class="btn-div1">
+                    <button (click)="redirectToRoom()" mat-raised-button class="but1">СОЗДАТЬ КОМНАТУ</button>
+                    </div>
+                    <div class="btn-div2">
+                    <button (click)="searchRoom()"mat-raised-button class="but2" id="search"><span id="sr">{{searchText}}</span></button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <mat-card fxFlexAlign="start" fxFlex.sm="30" fxFlex.md="30" fxFlex.lg="3" fxFlex.gt-lg="30">
-            <img src="assets/images/profile.png" width="160" height="160"/>
-            <p>kkkkkkkkk</p>
-        </mat-card> -->
     </mat-card>
 </div>

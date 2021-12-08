@@ -13,47 +13,359 @@
 .home-second {
     flex: 3;
     height: 100%;
+    margin-left: 16px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
 }
 .first-first {
-    flex: 1;
-    height: 100%;
-    //background-color:rgb(84, 231, 91);
+    height: min-content;
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
 }
 .second-first {
-    flex: 2;
+    margin-top: 16px;
     height: 100%;
-    //background-color:deeppink;
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
 }
 .first-second {
-    flex: 4;
+    flex: 7;
     height: 100%;
-    //background-color:rgb(20, 255, 184);
+    background-color:rgba(255, 255, 255, 0.164);
     border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 2px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
 }
+
 .second-second {
     flex: 1;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+
     height: 100%;
-    //background-color:rgb(192, 255, 20);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile {
+    background-color: rgb(255, 144, 70);
+    margin: 8px;
+    width: 148px;
+    height: 148px;
+    border: rgb(255, 144, 70) solid 3px;
     border-radius: 10px;
 }
 
-.profile {
-    width: 160px;
-    height: 160px;
-    border-radius: 5px;
+#profile:hover{
+    padding: 4px;
+    width: 140px;
+    height: 140px;
 }
 
-.card-container {
-  //background: blue;
-  padding: 10px;
-  color: white;
-  width: 500px;
-
+#userProfile {
+    margin: 6px;
+    width: 70px;
+    height: 70px;
+    border: rgb(255, 144, 70) solid 2px;
+    border-radius: 10px;
+}
+.user-container{
+  margin: 4px;
+  padding: 5px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.card-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.card-div2 {
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#change {
+    height: 16px;
+    width: 16px;
+}
+
+
+#change:hover {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.small-but-c {
+    background-color: rgba(25, 6, 41, 0);
+    border-radius: 20px;
+    border: none;
+    margin-top: 8px;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+#card-div1 {
+    display:flex;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    border-radius: 5px;  
+}
+
+#card-div3 {
+    flex: 2;
+    display:flex;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    border-radius: 5px;  
+}
+.card-div4 {
+    flex: 6;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.card-div5 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    margin: 8px;
+    justify-content: space-between;
+}
+
+.answer {
+    width: 26px;
+    height: 26px;
+}
+
+.answer:hover {
+    width: 28px;
+    height: 28px;
+}
+
+.btn-div1 {
+    flex: 1;
+    justify-content: end;
+}
+
+.btn-div2 {
+    flex: 1;
+    justify-content: start;
+}
+
+.but1 {
+    flex: 1;
+    background-color: rgb(255, 119, 28);
+    margin-top: 8px;
+    margin-left: 15%;
+    height: 65px;
+    width: 80%;
+    font: large Arial, sans-serif;
+    text-shadow: red 0 0 2px;
+}
+
+.but2 {
+    flex: 1;
+    background-color: rgb(255, 119, 28);
+    margin-top: 8px;
+    margin-right: 10%;
+    margin-left: 2%;
+    height: 65px;
+    width: 80%;
+    font: large Arial, sans-serif;
+    text-shadow: red 0 0 2px;
+}
+
+.mat-icon-button {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-toggle {
+    width: 100%;
+}
+
+.mat-button-toggle-group{
+    border: 0;
+}
+
+.mat-button-toggle {
+    background-color: rgb(35, 9, 56);
+    width: 100%;
+    color: rgba(235, 180, 248, 0.932);
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    border: rgb(35, 9, 56) solid 1px;
+}
+.mat-button-toggle-checked {
+    background-color: rgb(98, 49, 121);
+    color: white;
+    border: rgb(98, 49, 121);;
+}
+
+.scroll {
+    height: 380px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: rgb(35, 9, 56);
+    border-radius: 0px 0px 8px 8px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: rgb(209, 94, 0);
+    border-radius: 8px;
+}
+
+.small-but{
+    background-color: rgba(25, 6, 41, 0);
+    border-radius: 20px;
+    border: none;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+#del:hover{
+    width: 20px;
+    height: 25px;
+}
+
+.search-field {
+    width: 350px;
+    background-color: rgb(35, 9, 56, 0);
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#but-search {
+    width: 40px;
+    height: 40px;
+}
+#but-search:hover {
+    width: 42px;
+    height: 42px;
+}
+
+.small-but-search{
+    background-color: rgb(35, 9, 56, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 55px;
+    height: 60px;
+    padding: 0;
+}
+.small-but-search:hover{
+    cursor: pointer;
+}
+
+.small-but:hover{
+    cursor: pointer;
+}
+
+.results {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.514);
+}
+
+.center-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.change-name {
+    width: 208px;
+    margin-top: -10px;
+    margin-bottom: -20px;
+}
+
+mat-icon{
+    margin-right: -20px;
+}
+
+.grid {
+    width: 605px;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px;
+}
+
+.animation {
+    margin: 10px;
+    height: 148px;
+    width: 259px;
+    border-radius: 6px;
+}
+.add {
+    width: 25px;
+    height: 25px;
+}
+.add:hover{
+    width: 28px;
+    height: 28px;
+}
+
+.glow {
+    animation: glowing 1.5s infinite
+}
+
+@keyframes glowing{
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: orange;
+    }
+
+    100% {
+        color: white;
+    }
 }

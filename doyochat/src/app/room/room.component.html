@@ -1,0 +1,142 @@
+<div class="home-div" fxLayoutAlign="center center" fxFlexFill>
+    <mat-card class="home-card" fxFlexAlign="stretch" fxFlex.sm="95" fxFlex.md="90" fxFlex.lg="70" fxFlex.gt-lg="65">
+        <div class="home-main">
+            <div class="home-first">
+                <div class="first-first">
+                    <div class="header spec">
+                        <img src="./assets/images/exit.png" class="add" width ="25" height="25" (click)="leave()">
+                    </div>
+                    <div class="header">
+                        ИГРОКИ
+                    </div>
+                    <div class="header">
+                        <!-- <button mat-raised-button class="search-but">4  3  2</button> -->
+                    </div>
+
+                </div>
+                <div class="second-first scroll">
+                    <div>
+                    </div>
+                    <mat-card *ngFor="let player of this.socketService.players;let i = index" fxFlexAlign="stretch" class="user-container theme">
+                        <div id="card-div3">
+                            <div *ngIf = "i == 0; else elseBlock">
+                                <div *ngIf = "this.socketService.host;else elsePlayer">
+                                    <img [src]="'data:image/png;charset=utf-8;base64,'+ player.icon | sanitizer" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                </div> 
+                                <ng-template #elsePlayer>
+                                    <img [src]="'http://51.124.249.185/images/icons/' + player.icon" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                                </ng-template>
+                            </div>
+                            <ng-template #elseBlock>
+                                <img [src]="'http://51.124.249.185/images/icons/' + player.icon" mat-card-sm-image width ="70" height="70" id="userProfile"/>
+                            </ng-template>
+                        </div>
+                        <div class="card-div4">
+                            <span class="font-theme-small">{{player.username}}</span>
+                            <span>{{player.experience}}</span>
+                        </div>
+                        <div *ngIf="i != 0" class="card-div5">
+                            <div *ngIf="this.socketService.host">
+                                <button class="small-but" (click)="deletePlayer(player)">
+                                    <img id="del" width ="16" height="22" src="./assets/images/delete.png"/> 
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </mat-card>    
+                </div>
+                <div class="third-first">
+                    
+                </div>
+            </div>
+            <div class="home-second">
+                <div class="first-second" *ngIf="this.socketService.host; else elseSettings">
+                    
+                    <div class="settings">
+                    <mat-select class="select" [(ngModel)]="this.socketService.selected_players">
+                        <mat-option *ngFor="let num_p of players_num" [value]="num_p.value" (click)="setPlayers(num_p.value)">
+                        <div class="var">{{num_p.view}}</div>
+                        </mat-option>
+                    </mat-select>
+                    <span class="title">ИГРОКИ</span>
+                    </div>
+
+                    <div class="settings">
+                    <mat-select class="select" [(ngModel)]="this.socketService.selected_frames">
+                        <mat-option *ngFor="let num_f of frames_num" [value]="num_f.value" (click)="setFrames(num_f.value)">
+                        <div class="var">{{num_f.view}}</div>
+                        </mat-option>
+                    </mat-select>
+                    <span class="title">КАДРЫ</span>
+                    </div>
+
+                    <div class="settings">
+                    <mat-select class="select" [(ngModel)]="this.socketService.selected_time">
+                        <mat-option *ngFor="let time of game_time" [value]="time.value"  (click)="setTime(time.value)">
+                        <div class="var">{{time.view}}</div>
+                        </mat-option>
+                    </mat-select>
+                    <span class="title">ВРЕМЯ ХОДА</span>
+                    </div>
+                </div>
+                <ng-template #elseSettings>
+                    <div class="first-second">
+                        <div class="user-settings">
+                            <div class="set-block">{{this.socketService.selected_players}}</div>
+                            <div class="title">ИГРОКИ</div>
+                        </div>            
+                        <div class="user-settings">
+                            <div class="set-block">{{this.socketService.selected_frames}}</div>
+                            <div class="title">КАДРЫ</div>
+                        </div>
+                        <div class="user-settings">
+                            <div class="set-block">{{this.socketService.selected_time | seconds}}</div>
+                            <div class="title">ВРЕМЯ ХОДА</div>
+                        </div>
+                    </div>
+                </ng-template>
+                
+                <div class="second-second">
+                    <div class="chat scroll">
+                        <div *ngFor="let message of this.socketService.messages.reverse()">
+                            <div *ngIf="message.username !== account.username" class='username'>
+                                {{message.username}}
+                            </div>
+                            <div class="field" *ngIf="message.username !== account.username; else elseMessage">
+                                <div *ngIf="message.username; else elseAnim">
+                                    <div class='message'>{{message.value}}</div>
+                                </div>
+                                <ng-template #elseAnim>
+                                    <div class="message-anim">
+                                        <img [src]="'http://51.124.249.185/images/animations/' + message.value" width="392" height="225" class="anim">
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <ng-template #elseMessage>
+                                <div class="help">
+                                    <div class="field-host">
+                                        <div class='message'>{{message.value}}</div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Введите текст..." name="text" [(ngModel)]="text">
+                        <mat-icon matSuffix (click)="sendMessage()">send</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="third-second" *ngIf="this.socketService.host; else elseButtons">
+                    <button (click)="fillRoom()" id="fill" mat-raised-button class="search" (click)="initSocket()"><span id="gl"class="none">{{fillText}}</span></button>
+                    <button (click)="startGame()" mat-raised-button class="but">НАЧАТЬ ИГРУ</button>
+                </div>
+                <ng-template #elseButtons>
+                <div class="third-second">
+                    <button mat-raised-button class="search" disabled><span>{{fillText}}</span></button>
+                    <button mat-raised-button class="but" disabled>НАЧАТЬ ИГРУ</button>
+                </div>
+                </ng-template>
+            </div>
+        </div>
+    </mat-card>
+</div>

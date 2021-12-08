@@ -1,13 +1,20 @@
 <div class="main-div" fxLayoutAlign="center center" fxFlexFill>
     <mat-card class="auth-card" fxFlex.sm="60" fxFlex.md="40" fxFlex.lg="20" fxFlex.gt-lg="20">
         <mat-toolbar class="auth-toolbar">Вход</mat-toolbar>
-        <form class="auth-form" fxLayout="column" (ngSubmit)="login()">
+        <form [formGroup]="form" class="auth-form" fxLayout="column" (ngSubmit)="login()">
             <mat-form-field>
-                <input matInput type="text" placeholder="Электронная почта">
+                <input matInput type="text" placeholder="Электронная почта" formControlName="email" (click)="removeErrors()">
             </mat-form-field>
+            <span *ngIf="form.controls.email.hasError('required') && isSubmitted" class="error">Поле должно быть заполнено </span>
+            <span *ngIf="form.controls.email.hasError('maxlength') && isSubmitted" class="error">Допустимое кол-во символов от 3 до 35 </span>
+            <span *ngIf="form.controls.email.hasError('email') && isSubmitted" class="error">Не соответствует формату </span>
             <mat-form-field>
-                <input matInput type="password" placeholder="Пароль">
+                <input matInput type="password" placeholder="Пароль" formControlName="password" (click)="removeErrors()">
             </mat-form-field>
+            <span *ngIf="form.controls.password.hasError('required') && isSubmitted" class="error">Поле должно быть заполнено </span>
+            <span *ngIf="form.controls.password.hasError('minlength') && isSubmitted" class="error">Пароль должен содержать не менее 8 символов </span>
+            <span *ngIf="form.controls.password.hasError('pattern') && isSubmitted" class="error">Пароль должен содержать только латинские буквы и цифри </span>
+            <span *ngIf="form.controls.password.hasError('maxlength') && isSubmitted" class="error">Пароль должен содержать не более 35 символов </span>
             <p>Нет аккаунта?
                 <a routerLink="/register">Регистрация</a></p>
             <button class="enter" mat-raised-button type="submit">Войти</button><br>

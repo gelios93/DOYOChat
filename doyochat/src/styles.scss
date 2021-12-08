@@ -56,15 +56,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field {
     .mat-input-element {
       color: white;
+      background:transparent;
     }
     .mat-form-field-label {
       color: rgba(255, 255, 255, 0.555);
     }
     .mat-form-field-underline {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.555);
     }
     .mat-form-field-ripple {
-      background-color: white;
+      background-color: rgb(255, 255, 255);
     }
     .mat-form-field-required-marker {
       color: white;
@@ -74,4 +75,48 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .theme {
     color: white;
     background-color: rgb(22, 5, 36);
+}
+
+.error {
+    padding: 0;
+    margin: 0;
+    color:crimson;
+    font-size:xx-small;
+}
+
+.mat-form-field {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.font-theme{
+    color: rgb(255, 144, 70);
+    font-size: 28px;
+    margin-bottom: 3px;
+    font-family: Arial, sans-serif;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+.font-theme-small{
+    color: rgb(255, 144, 70);
+    font-size: 22px;
+    font-family: Arial, sans-serif;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+transition: background-color 5000s;
+-webkit-text-fill-color: #fff !important;
+}
+
+.dialog-theme{
+    background-color: rgba(39, 11, 61, 0.5);
+    color: rgb(39, 11, 61);
+}
+
+.mat-dialog-container {
+    background-color: rgba(39, 11, 61);
 }
